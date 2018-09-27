@@ -49,4 +49,5 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-reflect")
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile group: 'io.mockk', name: 'mockk', version: '1.8.7'
 }

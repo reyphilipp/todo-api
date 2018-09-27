@@ -1,8 +1,8 @@
 package ch.rey.todoapi
 
-import ch.rey.todoapi.auth.model.AuthService
-import ch.rey.todoapi.auth.repository.IUserRepository
-import ch.rey.todoapi.auth.model.User
+import ch.rey.todoapi.auth.controller.TodoController
+import ch.rey.todoapi.auth.model.Todo
+import ch.rey.todoapi.auth.repository.ITodoRepository
 import org.hamcrest.CoreMatchers
 import org.junit.Assert
 import org.junit.Test
@@ -12,14 +12,16 @@ import org.springframework.test.context.junit4.SpringRunner
 import javax.inject.Inject
 
 
+
 @RunWith(SpringRunner::class)
 @SpringBootTest
 class TodoApiApplicationTests {
 
     @Inject
-    lateinit var iUserRepository: IUserRepository
+    //lateinit var iUserRepository: IUserRepository
+    lateinit var  iTodoRepository: ITodoRepository
 
-	@Test
+	/*@Test
 	fun contextLoads() {
 
 		val sut = AuthService(iUserRepository)
@@ -28,7 +30,17 @@ class TodoApiApplicationTests {
 
         Assert.assertThat(user.id, CoreMatchers.not(0L))
 
-	}
+	}*/
+
+    @Test
+    fun contextLoads(){
+        val sut = TodoController(iTodoRepository)
+
+        val todo = sut.createTodo((Todo(titel = "hh", todo = "hoi" )))
+
+        Assert.assertThat(todo.statusCodeValue, CoreMatchers.equalTo(200))
+
+    }
 
 
 
