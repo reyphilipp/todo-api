@@ -8,4 +8,5 @@ class TodoApiApplication
 
 fun main(args: Array<String>) {
     runApplication<TodoApiApplication>(*args)
+    println("API Rey läuft")
 }
